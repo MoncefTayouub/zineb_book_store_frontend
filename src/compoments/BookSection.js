@@ -20,7 +20,7 @@ function BookSection(index ) {
   return (
     <div className={'BookSection center '+cla}>
         <div className='image center'>
-        <img src={'http://127.0.0.1:8000/'+index.ob['cover']} />
+        <img src={index.backend_url+index.ob['cover']} />
         </div>
         <div className='details'>
             <h4>{index.ob['name']} </h4>

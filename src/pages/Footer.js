@@ -6,6 +6,8 @@ import facebook from '../icons/facebook.svg'
 import whitelogo from '../icons/whitelogo.svg'
 function Footer({setContent ,contact , setContact}) {
 
+     const backend_url = 'http://moncefwitcher.pythonanywhere.com/'
+
 
     const [data , setDate] = useState()
     useEffect(()=>{
@@ -13,7 +15,7 @@ function Footer({setContent ,contact , setContact}) {
       },[])    
       let getData = async () => {
 
-        let respons = await fetch ('http://127.0.0.1:8000/for_footer/')
+        let respons = await fetch (`${backend_url}for_footer/`)
         let data = await respons.json()
         setDate(data)
         

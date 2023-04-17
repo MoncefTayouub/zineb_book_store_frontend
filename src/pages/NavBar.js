@@ -18,28 +18,7 @@ function NavBar({userLogin , setUserLogin ,supPage , setSupPage , content , setC
     setUserLogin(false)
     setdrop(false)
 }
-useEffect(()=> {
-  collectData()
-},[])
-const collectData =()=> {
-  const jwt = localStorage.getItem('jwt_auth')
-  // axios.defaults.headers.common['Authorization'] = `Bearer ${jwt}`;
-  // axios.get('http://127.0.0.1:8000/check_perm/')
-  // .then(response => {
-  //   if (response.status == 200) {
-  //       const data = response.data
 
-  //       setData(data)
-  //       if (data['permissionSet']==true ){
-            
-  //         SetPermissionSet(true)
-
-  //       }
-        
-  //   }
-  // });
- 
-}
 const handelPub = ()=> {
   setdrop(false)
 
@@ -100,7 +79,7 @@ const [isSticky, setIsSticky] = useState(false);
     },[])    
     let getData = async () => {
 
-      let respons = await fetch ('http://127.0.0.1:8000/general/pages_indexing')
+      let respons = await fetch ('http://moncefwitcher.pythonanywhere.com/general/pages_indexing')
       let output = await respons.json()
       set_generat_data(output)
     }
@@ -118,16 +97,16 @@ const [isSticky, setIsSticky] = useState(false);
     
     const redirect = (location,index)=> {
       if (location == -1 ) {
-        window.location.href = `http://localhost:3000/book_category/${index}`;
+        window.location.href = `book_category/${index}`;
       }
       if (location == 1 ) {
 
-        window.location.href = `http://localhost:3000/renderpage/${index}`;
+        window.location.href = `renderpage/${index}`;
       }
 
       if (location == 2 ) {
 
-        window.location.href = `http://localhost:3000/a_propos_de_nous`;
+        window.location.href = `a_propos_de_nous`;
       }
       
     }
@@ -148,8 +127,8 @@ const [isSticky, setIsSticky] = useState(false);
       };
     }, []);
 
-    console.log(windowWidth)
 
+    
     // -----------------------------------
     const respo = ()=> {
       const jwt = localStorage.getItem('jwt_auth')
@@ -172,9 +151,11 @@ const [isSticky, setIsSticky] = useState(false);
     <div className=''>
       <div className='NavBar spacebetween' ref={navBar}>
 
-          <a href={'http://localhost:3000' }>
+          <a href={'/' }>
               <img src={logo} />
           </a>
+
+
 
           <div className='center contactUs'>
              {

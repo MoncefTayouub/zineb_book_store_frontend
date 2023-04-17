@@ -17,10 +17,11 @@ import jwt from 'jwt-decode'
 
 function PageTemplate({content , setContent ,contact , setContact}) {
     const params = useParams() ;
+    const backend_url = 'http://moncefwitcher.pythonanywhere.com/'
 
     const redirect = (index)=> {
 
-      window.location.href = `http://localhost:3000/renderpage/${index}`;
+      window.location.href = `/renderpage/${index}`;
      
     }
 
@@ -104,7 +105,7 @@ const [update,setUpdate] = useState(false)
         
         await axios ({
             method : 'post' , 
-            url : 'http://127.0.0.1:8000/general/page_content/' ,
+            url : backend_url+'general/page_content/' ,
             data : data
         })
         .then((response)=>{
@@ -278,7 +279,7 @@ const [update,setUpdate] = useState(false)
   
         await axios ({
             method : 'post' , 
-            url : 'http://127.0.0.1:8000/register_quiz_answers' ,
+            url : backend_url+'register_quiz_answers' ,
             data : dataL
         })
         .then((response)=>{
@@ -308,7 +309,7 @@ const [update,setUpdate] = useState(false)
 
       await axios ({
           method : 'post' , 
-          url : 'http://127.0.0.1:8000/register_user_comment' ,
+          url : backend_url+'register_user_comment' ,
           data : dataL
       })
       .then((response)=>{
@@ -601,7 +602,7 @@ useEffect(() => {
                        
                     : (ob['style'] == 7) ?
                         <div className='img_container  center margin_bottom' >   
-                            <img className='' src={'http://127.0.0.1:8000/'+ob['content']['link']} />
+                            <img className='' src={backend_url+ob['content']['link']} />
                            
                         </div> 
 
@@ -609,10 +610,10 @@ useEffect(() => {
                
 
                     <div className='file_section center margin_bottom' >
-                       <Document file={"http://127.0.0.1:8000/"+ob['content']['link']} noData={true} noInteractive={true}>
+                       <Document file={backend_url+ob['content']['link']} noData={true} noInteractive={true}>
                            <Page pageNumber={1} width={windowWidth/2} renderMode="" />
                        </Document>
-                       <button onClick={()=>downloadPDF(`http://127.0.0.1:8000/${ob['content']['link']}`)}>Telecharger</button>
+                       <button onClick={()=>downloadPDF(backend_url+ob['content']['link'])}>Telecharger</button>
                      </div>
                         :
                   <li className={styles[ob['style']] + ' margin_bottom' }  key={i}>{ob['content']}</li>
@@ -624,7 +625,7 @@ useEffect(() => {
                   <div className='comment'>
                     <div className='user center'>
                       <div className='pic_border center'>
-                        <img src={`http://127.0.0.1:8000/${ob['picture']}`} />
+                        <img src={backend_url+ob['picture']} />
                       </div>
                         <p>{ob['user']}</p>    
                     </div>

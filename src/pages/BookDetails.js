@@ -3,6 +3,8 @@ import dune from '../img/dune.png'
 import BookSection from '../compoments/BookSection'
 import {useParams } from "react-router-dom"
 function BookDetails(id) {
+  const backend_url = 'http://moncefwitcher.pythonanywhere.com/'
+
     const params = useParams() ;
     const [data , setDate] = useState()
     const [curBook , setCurBook] = useState([])
@@ -11,7 +13,7 @@ function BookDetails(id) {
       },[])    
       let getData = async () => {
 
-        let respons = await fetch (`http://127.0.0.1:8000/bookdetails/${params.id}`)
+        let respons = await fetch (`${backend_url}bookdetails/${params.id}`)
         let data = await respons.json()
         setDate(data)
         setCurBook(data['theBook'][0])
@@ -26,7 +28,7 @@ function BookDetails(id) {
                   
         <div className='bock center'>
             <div className='imgSection center'>
-                 <img src={'http://127.0.0.1:8000/'+curBook['cover']} />
+                 <img src={backend_url+curBook['cover']} />
             </div>
             <div className='details'>
                 <h3>{curBook['name']} </h3>

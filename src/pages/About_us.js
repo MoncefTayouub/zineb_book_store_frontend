@@ -20,7 +20,7 @@ function About_us() {
 
     const redirect = (index)=> {
 
-      window.location.href = `http://localhost:3000/renderpage/${index}`;
+      window.location.href = `/renderpage/${index}`;
      
     }
 

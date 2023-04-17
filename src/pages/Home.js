@@ -11,6 +11,7 @@ function Home({content , setContent ,contact , setContact , userLogin,setUserLog
     const navigate = useNavigate();
     const [zinebBox , setZinebBox] = useState([])
     const [devBox , setDebBooks] = useState([])
+    const backend_url = 'http://moncefwitcher.pythonanywhere.com/'
     
     const [data , setDate] = useState()
     useEffect(()=>{
@@ -18,7 +19,7 @@ function Home({content , setContent ,contact , setContact , userLogin,setUserLog
       },[])    
       let getData = async () => {
 
-        let respons = await fetch ('http://127.0.0.1:8000/zinebprofile')
+        let respons = await fetch (`${backend_url}zinebprofile`)
         let data = await respons.json()
         setDate(data)
         
@@ -77,7 +78,7 @@ function Home({content , setContent ,contact , setContact , userLogin,setUserLog
         <div className='auteurImage center'>
             <div className='borders center'>
 
-            <img src={'http://127.0.0.1:8000/'+data['zinebProf']['picture']} />
+            <img src={backend_url+data['zinebProf']['picture']} />
             </div>
         </div>
         <div className='detailsAut'>
@@ -103,7 +104,7 @@ function Home({content , setContent ,contact , setContact , userLogin,setUserLog
             
             {
                 om['books'].map((or,r)=>
-                <BookSection  index={i}  ob={or}  key={r} setContent={setContent} content={content}  setContact={setContact} contact={contact} />     
+                <BookSection  index={i}  ob={or}  key={r} setContent={setContent} content={content} backend_url={backend_url}  setContact={setContact} contact={contact} />     
                 )
                 
             }

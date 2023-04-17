@@ -51,7 +51,7 @@ const UpdateUser =  async() => {
     dataL.append('new_password',newPass);
       await axios ({
         method : 'post' , 
-        url : 'http://127.0.0.1:8000/profile/updatekey' ,
+        url : 'http://moncefwitcher.pythonanywhere.com/profile/updatekey' ,
         data : dataL
     })
     .then((response)=>{
@@ -90,7 +90,7 @@ const login = async()=> {
     DataForm.append('password' , password)
     await axios ({
         method : 'post' , 
-        url : 'http://127.0.0.1:8000/login/' ,
+        url : 'http://moncefwitcher.pythonanywhere.com/login/' ,
         data : DataForm
     })
     .then((response)=>{
@@ -158,7 +158,7 @@ const sign = async()=> {
         DataForm.append('email' , email)
         await axios ({
             method : 'post' , 
-            url : 'http://127.0.0.1:8000/sign/' ,
+            url : 'http://moncefwitcher.pythonanywhere.com/sign/' ,
             data : DataForm
         })
         .then((response)=>{
@@ -196,7 +196,7 @@ const send_permission_req =async()=> {
     DataForm.append('jwt' , jwt)
     await axios ({
         method : 'post' , 
-        url : 'http://127.0.0.1:8000/set_permission/' ,
+        url : 'http://moncefwitcher.pythonanywhere.com/set_permission/' ,
         data : DataForm
     })
     .then((response)=>{
@@ -231,7 +231,7 @@ const userRegProf =async()=> {
 
     await axios ({
         method : 'post' , 
-        url : 'http://127.0.0.1:8000/profile_register/' ,
+        url : 'http://moncefwitcher.pythonanywhere.com/profile_register/' ,
         data : DataForm
     })
     .then((response)=>{
@@ -565,7 +565,7 @@ switch (content){
                                                 <div className='container all_center center'>
                                                         <div className='profile_stage spacebetween'>
                                                             <div className='hold center' >
-                                                                <img src={'http://127.0.0.1:8000/'+resp['picture']} />
+                                                                <img src={'http://moncefwitcher.pythonanywhere.com/'+resp['picture']} />
                                                             </div>
                                                                 <p>{resp['full_name']}</p>
                                                                 <p>{resp['job']}</p>

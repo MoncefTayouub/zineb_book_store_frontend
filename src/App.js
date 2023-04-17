@@ -32,7 +32,8 @@ function App() {
   const [userLogin, setUserLogin] = useState(false)
   const [resp , setResp ] = useState()
 
-  
+  const backend_url = 'http://moncefwitcher.pythonanywhere.com/'
+
 
   
 
@@ -43,7 +44,7 @@ function App() {
       
     }else {
       axios.defaults.headers.common['Authorization'] = `Bearer ${jwt}`;
-      axios.get('http://127.0.0.1:8000/authorization/')
+      axios.get(`${backend_url}authorization/`)
       .then(response => {
         if (response.status == 200) {
           setUserLogin(true)
@@ -73,6 +74,7 @@ function App() {
 
 
 
+     
   return (
     <div className="App " >  
       {/* <div className='message'></div> */}

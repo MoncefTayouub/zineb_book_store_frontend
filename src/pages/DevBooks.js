@@ -5,6 +5,7 @@ import {useParams } from "react-router-dom"
 
 function DevBooks(index) {
   const params = useParams() ;
+  const backend_url = 'http://moncefwitcher.pythonanywhere.com/'
 
   useEffect (()=>{
       index.setSupPage(2)
@@ -16,7 +17,7 @@ function DevBooks(index) {
       },[])    
       let getData = async () => {
 
-        let respons = await fetch (`http://127.0.0.1:8000/general/book_category/${params.index}`)
+        let respons = await fetch (`${backend_url}general/book_category/${params.index}`)
         let data = await respons.json()
         setDate(data)
       }  
@@ -34,14 +35,14 @@ function DevBooks(index) {
         </div>
         {data['books'].map((ob,i)=>
         
-          <BookSection index={i}  ob={ob}  key={i}  />
+          <BookSection index={i} backend_url={backend_url}  ob={ob}  key={i}  />
         )}
         <div className='headline_container center'>
             <h3>Élargissez vos horizons littéraires : découvrez plus de livres !</h3>
         </div>
         {data['other_books'].map((ob,i)=>
         
-          <BookSection index={i}  ob={ob}  key={i}  />
+          <BookSection index={i} backend_url={backend_url}  ob={ob}  key={i}  />
         )}
         </div> : '' }   
     </div>

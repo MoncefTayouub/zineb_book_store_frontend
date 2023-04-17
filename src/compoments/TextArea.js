@@ -23,6 +23,9 @@ import {useNavigate} from 'react-router-dom';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 function TextArea({edited_page_id , setEdited_page}) {
+
+  const backend_url = 'http://moncefwitcher.pythonanywhere.com/'
+
   const navigate = useNavigate()
 
   const [update , setUpdate] = useState(false) 
@@ -49,7 +52,7 @@ function TextArea({edited_page_id , setEdited_page}) {
       getData();
     },[update])    
     let getData = async () => {
-      let respons = await fetch ('http://127.0.0.1:8000/add_page_cat')
+      let respons = await fetch (`${backend_url}add_page_cat`)
       let data = await respons.json()
       setDate(data)
     }
@@ -533,7 +536,7 @@ const handle_delete_page = async(id) => {
   
   await axios ({
       method : 'post' , 
-      url : 'http://127.0.0.1:8000/add_page/delete' ,
+      url : `${backend_url}add_page/delete` ,
       data : pack
   })
   .then((response)=>{
@@ -636,10 +639,10 @@ const opts = {
   const [homePage_desc , set_homePage_desc ] = useState()
 
   useEffect(()=>{
-    if ( cat_select?.['type'] == 2 ) {  
-      setText(data?.['about']['content'])
-      set_homePage_desc(data?.['about']['desc'])
-    }
+    // if ( cat_select?.['type'] == 2 ) {  
+    //   setText(data?.['about']['content'])
+    //   set_homePage_desc(data?.['about']['desc'])
+    // }
   },[cat_select])
 
   const handel_page = async ()=> {
@@ -666,7 +669,7 @@ const opts = {
        if (send ){
          await axios ({
             method : 'post' , 
-            url : 'http://127.0.0.1:8000/add_page' ,
+            url : `${backend_url}add_page`,
             data : pack
         }) 
         .then((response)=>{
@@ -916,7 +919,7 @@ const register_picture = async (line)=> {
 
   await axios ({
       method : 'post' , 
-      url : 'http://127.0.0.1:8000/add_page/register_picture' ,
+      url : `${backend_url}add_page/register_picture` ,
       data : dataL
   })
   .then((response)=>{
@@ -941,7 +944,7 @@ const register_document = async (line)=> {
 
   await axios ({
       method : 'post' , 
-      url : 'http://127.0.0.1:8000/add_page/register_pdf' ,
+      url : `${backend_url}add_page/register_pdf` ,
       data : dataL
   })
   .then((response)=>{
@@ -994,14 +997,14 @@ const [delete_sideTable , set_delete_sideTable ] = useState(false)
 
 const handle_adding_side_table = async ()=> {
   if (sideTable_title != ''){
-    let url =  'http://127.0.0.1:8000/register_side_table'
+    let url =  `${backend_url}register_side_table`
     const dataL = new FormData();
   dataL.append('table_name', sideTable_title);
   
   if (index_edit_sideTable) {
       dataL.append('id', index_edit_sideTable - 1);
 
-      url = 'http://127.0.0.1:8000/edit_side_table'
+      url = `${backend_url}edit_side_table`
     }
 
   await axios ({
@@ -1032,7 +1035,7 @@ const handle_adding_side_table = async ()=> {
   
     await axios ({
         method : 'post' , 
-        url : 'http://127.0.0.1:8000/delete_side_table'  ,
+        url : `${backend_url}delete_side_table`  ,
         data : dataL
     })
     .then((response)=>{
@@ -1507,7 +1510,7 @@ return (
                           </div>
                        </div>
                        : <div className='img_container  center margin_bottom' id={'item_'+i} onMouseEnter={()=>set_delete_item_line(i)}>   
-                            <img className='' src={'http://127.0.0.1:8000/'+ob['content']['link']} />
+                            <img className='' src={backend_url+ob['content']['link']} />
                            
                         </div> 
 
@@ -1521,10 +1524,10 @@ return (
                           </div>
                        </div>
                        : <div className='file_section center margin_bottom' id={'item_'+i} onMouseEnter={()=>set_delete_item_line(i)}>
-                       <Document file={"http://127.0.0.1:8000/"+ob['content']['link']} noData={true} noInteractive={true}>
+                       <Document file={backend_url+ob['content']['link']} noData={true} noInteractive={true}>
                            <Page pageNumber={1} width={300} renderMode="" />
                        </Document>
-                       <button onClick={()=>downloadPDF(`http://127.0.0.1:8000/${ob['content']['link']}`)}>Telecharger</button>
+                       <button onClick={()=>downloadPDF(backend_url+ob['content']['link'])}>Telecharger</button>
                      </div>
                         :
                   <li className={styles[ob['style']] + ' margin_bottom' } onClick={()=>setEditedIndx(i)} key={i}>{ob['content']}</li>
