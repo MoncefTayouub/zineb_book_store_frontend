@@ -79,7 +79,7 @@ const [isSticky, setIsSticky] = useState(false);
     },[])    
     let getData = async () => {
 
-      let respons = await fetch ('http://moncefwitcher.pythonanywhere.com/general/pages_indexing')
+      let respons = await fetch ('https://moncefwitcher.pythonanywhere.com/general/pages_indexing')
       let output = await respons.json()
       set_generat_data(output)
     }

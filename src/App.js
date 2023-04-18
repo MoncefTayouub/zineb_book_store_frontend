@@ -23,12 +23,13 @@ import Profile from './pages/Profile';
 import TextArea from './compoments/TextArea';
 import TextTest from './pages/TextTest';
 import PageTemplate from './pages/PageTemplate';
-import About_us from './pages/About_us';
+
+import About_us from './pages/About_us';   
 
 function App() {
   const [supPage , setSupPage ] = useState(0)
   const [contact , setContact] = useState(false)
-  const [content , setContent ] = useState()
+  const [content , setContent ] = useState()    
   const [userLogin, setUserLogin] = useState(false)
   const [resp , setResp ] = useState()
 

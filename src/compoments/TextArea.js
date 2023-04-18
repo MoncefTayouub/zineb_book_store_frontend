@@ -634,15 +634,15 @@ const opts = {
 
 
 
-  const parent_type_list =  ['category', 'Sous Page' , 'A propos']
+  const parent_type_list =  ['category', 'pages à droite' , 'A propos']
   
   const [homePage_desc , set_homePage_desc ] = useState()
 
   useEffect(()=>{
-    // if ( cat_select?.['type'] == 2 ) {  
-    //   setText(data?.['about']['content'])
-    //   set_homePage_desc(data?.['about']['desc'])
-    // }
+    if ( cat_select?.['type'] == 2 ) {  
+      setText(data?.['about']['content'])
+      set_homePage_desc(data?.['about']['desc'])
+    }
   },[cat_select])
 
   const handel_page = async ()=> {
