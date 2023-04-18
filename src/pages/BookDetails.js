@@ -3,7 +3,7 @@ import dune from '../img/dune.png'
 import BookSection from '../compoments/BookSection'
 import {useParams } from "react-router-dom"
 function BookDetails(id) {
-  const backend_url = 'http://moncefwitcher.pythonanywhere.com/'
+  const backend_url = 'https://moncefwitcher.pythonanywhere.com/'
 
     const params = useParams() ;
     const [data , setDate] = useState()

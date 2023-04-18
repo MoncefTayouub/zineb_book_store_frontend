@@ -17,7 +17,7 @@ import jwt from 'jwt-decode'
 
 function About_us() {
     const params = useParams() ;
-
+    const backend_url = 'https://moncefwitcher.pythonanywhere.com/'
     const redirect = (index)=> {
 
       window.location.href = `/renderpage/${index}`;
@@ -66,7 +66,7 @@ const [update,setUpdate] = useState(false)
       },[])    
       let getData = async () => {
 
-        let respons = await fetch ('http://127.0.0.1:8000/about_page')
+        let respons = await fetch (`${backend_url}/about_page`)
         let data = await respons.json()
         setText(data['content'])
       }
@@ -216,7 +216,7 @@ const [update,setUpdate] = useState(false)
   
         await axios ({
             method : 'post' , 
-            url : 'http://127.0.0.1:8000/register_quiz_answers' ,
+            url : '${backend_url}/register_quiz_answers' ,
             data : dataL
         })
         .then((response)=>{
@@ -460,7 +460,7 @@ const [update,setUpdate] = useState(false)
                        
                     : (ob['style'] == 7) ?
                         <div className='img_container  center margin_bottom' >   
-                            <img className='' src={'http://127.0.0.1:8000/'+ob['content']['link']} />
+                            <img className='' src={backend_url+ob['content']['link']} />
                            
                         </div> 
 
@@ -468,10 +468,10 @@ const [update,setUpdate] = useState(false)
                
 
                     <div className='file_section center margin_bottom' >
-                       <Document file={"http://127.0.0.1:8000/"+ob['content']['link']} noData={true} noInteractive={true}>
+                       <Document file={backend_url+ob['content']['link']} noData={true} noInteractive={true}>
                            <Page pageNumber={1} width={300} renderMode="" />
                        </Document>
-                       <button onClick={()=>downloadPDF(`http://127.0.0.1:8000/${ob['content']['link']}`)}>Telecharger</button>
+                       <button onClick={()=>downloadPDF( backend_url + ob['content']['link'])}>Telecharger</button>
                      </div>
                         :
                   <li className={styles[ob['style']] + ' margin_bottom' }  key={i}>{ob['content']}</li>

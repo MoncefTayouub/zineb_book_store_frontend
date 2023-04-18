@@ -11,7 +11,7 @@ function Home({content , setContent ,contact , setContact , userLogin,setUserLog
     const navigate = useNavigate();
     const [zinebBox , setZinebBox] = useState([])
     const [devBox , setDebBooks] = useState([])
-    const backend_url = 'http://moncefwitcher.pythonanywhere.com/'
+    const backend_url = 'https://moncefwitcher.pythonanywhere.com/'
     
     const [data , setDate] = useState()
     useEffect(()=>{

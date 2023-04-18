@@ -17,7 +17,7 @@ import jwt from 'jwt-decode'
 
 function PageTemplate({content , setContent ,contact , setContact}) {
     const params = useParams() ;
-    const backend_url = 'http://moncefwitcher.pythonanywhere.com/'
+    const backend_url = 'https://moncefwitcher.pythonanywhere.com/'
 
     const redirect = (index)=> {
 

@@ -21,7 +21,7 @@ function PlayListsPage(index) {
 
     let getData = async () => {
 
-      let respons = await fetch (`http://127.0.0.1:8000/FrenchCourses/playlist/${param.id}/`)
+      let respons = await fetch (`https://127.0.0.1:8000/FrenchCourses/playlist/${param.id}/`)
       let data = await respons.json()
       setData(data)
       console.log(data)

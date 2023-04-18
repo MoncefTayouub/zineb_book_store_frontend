@@ -5,7 +5,7 @@ import {useParams } from "react-router-dom"
 
 function DevBooks(index) {
   const params = useParams() ;
-  const backend_url = 'http://moncefwitcher.pythonanywhere.com/'
+  const backend_url = 'https://moncefwitcher.pythonanywhere.com/'
 
   useEffect (()=>{
       index.setSupPage(2)

@@ -231,7 +231,7 @@ function Profile({content , setContent ,contact , setContact}) {
 
           await axios ({
             method : 'post' , 
-            url : 'http://127.0.0.1:8000/video/playlist/delete' ,
+            url : 'https://127.0.0.1:8000/video/playlist/delete' ,
             data : dataL
         })
         .then((response)=>{

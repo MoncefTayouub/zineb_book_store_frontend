@@ -10,6 +10,7 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 function Course({content , setContent ,contact , setContact ,userLogin, setUserLogin,setSupPage}) {
     let param = useParams();
+    const backend_url = 'https://moncefwitcher.pythonanywhere.com/'
     const navigate = useNavigate();
     const [if_log , setIf_log] = useState(false)
     useEffect (()=>{
@@ -51,7 +52,7 @@ function Course({content , setContent ,contact , setContact ,userLogin, setUserL
         },[])    
         let getData = async () => {
   
-          let respons = await fetch (`http://127.0.0.1:8000/FrenchCourses/category/${param.id}`)
+          let respons = await fetch (`${backend_url}/FrenchCourses/category/${param.id}`)
           let data = await respons.json()
           setDate(data)
           SetcurCat(data['currCategoru'][0])

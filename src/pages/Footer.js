@@ -6,7 +6,7 @@ import facebook from '../icons/facebook.svg'
 import whitelogo from '../icons/whitelogo.svg'
 function Footer({setContent ,contact , setContact}) {
 
-     const backend_url = 'http://moncefwitcher.pythonanywhere.com/'
+     const backend_url = 'https://moncefwitcher.pythonanywhere.com/'
 
 
     const [data , setDate] = useState()
