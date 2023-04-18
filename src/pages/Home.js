@@ -50,8 +50,6 @@ function Home({content , setContent ,contact , setContact , userLogin,setUserLog
       
       const [index_counter , set_index_counter] = useState(0)
 
-      console.log(data)
-
   return (
     <div className='Home'>
       
@@ -98,7 +96,7 @@ function Home({content , setContent ,contact , setContact , userLogin,setUserLog
     {data['books'].map((om,i)=>
             <>
             
-            <div className='headline_container center'>
+            <div key={i} className='headline_container center'>
                  <h3>{om['cat']['title']}</h3>
              </div>
             

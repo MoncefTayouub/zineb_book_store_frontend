@@ -33,7 +33,7 @@ function App() {
   const [userLogin, setUserLogin] = useState(false)
   const [resp , setResp ] = useState()
 
-  const backend_url = 'http://moncefwitcher.pythonanywhere.com/'
+  const backend_url = 'https://moncefwitcher.pythonanywhere.com/'
 
 
   
