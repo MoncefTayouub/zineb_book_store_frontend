@@ -21,6 +21,8 @@ function Admin({setSetTest , edited_page_id , setEdited_page}) {
     const navigate = useNavigate()
     const [clicked , setClicked] = useState(5)
     const img_btn = useRef(null)
+    const backend_url = 'https://moncefwitcher.pythonanywhere.com/'
+
     
     // ---------- get data ------------
 
@@ -39,7 +41,7 @@ function Admin({setSetTest , edited_page_id , setEdited_page}) {
         Fdata.append('jwt', jwt);
         await axios ({
             method : 'post' , 
-            url : 'http://moncefwitcher.pythonanywhere.com/permission_data/' ,
+            url : backend_url+'permission_data/' ,
             data : Fdata
         })
         .then((response)=>{
@@ -51,7 +53,7 @@ function Admin({setSetTest , edited_page_id , setEdited_page}) {
             setInstagram(response.data['links']['insta'])
             setwhatsapp(response.data['links']['whatsapp'])
             setgmail(response.data['links']['gmail'])
-            console.log(response.data)
+            console.log(respo)
            
         }) .catch(function (error) {
             console.log(error)
@@ -91,10 +93,10 @@ function Admin({setSetTest , edited_page_id , setEdited_page}) {
         data.append('name', C_name);
         data.append('desc', C_desc);
         
-        let url = 'http://moncefwitcher.pythonanywhere.com/add_category/'
+        let url = backend_url+'/add_category/'
         if (catIndex) {
             data.append('id',catIndex );
-            url = 'http://moncefwitcher.pythonanywhere.com/add_category/edite'
+            url = backend_url+'/add_category/edite'
         }
         await axios ({
             method : 'post' , 
@@ -135,7 +137,7 @@ function Admin({setSetTest , edited_page_id , setEdited_page}) {
 
         await axios ({
             method : 'post' , 
-            url : 'http://moncefwitcher.pythonanywhere.com/add_category/delete' ,
+            url : backend_url+'/add_category/delete' ,
             data : dataL
         })
         .then((response)=>{
@@ -160,7 +162,7 @@ function Admin({setSetTest , edited_page_id , setEdited_page}) {
 
         await axios ({
             method : 'post' , 
-            url : 'http://moncefwitcher.pythonanywhere.com/bookdetails/rm' ,
+            url : backend_url+'bookdetails/rm' ,
             data : dataL
         })
         .then((response)=>{
@@ -236,10 +238,10 @@ function Admin({setSetTest , edited_page_id , setEdited_page}) {
             data.append('picture', b_cover);
         }
 
-        let url = 'http://moncefwitcher.pythonanywhere.com/add_book/'
+        let url = backend_url+'add_book/'
         if (bookEdit ) {
             data.append('id' , bookEdit)
-            url =  'http://moncefwitcher.pythonanywhere.com/bookdetails/edit'
+            url =  backend_url+'bookdetails/edit'
         }
 
         
@@ -275,7 +277,7 @@ function Admin({setSetTest , edited_page_id , setEdited_page}) {
         
         await axios ({
             method : 'post' , 
-            url : 'http://moncefwitcher.pythonanywhere.com/permission_accept/' ,
+            url : backend_url+'permission_accept/' ,
             data : data
         })
         .then((response)=>{
@@ -297,7 +299,7 @@ const handel_refuse = async(id)=> {
     data.append('resp', false);
     await axios ({
         method : 'post' , 
-        url : 'http://moncefwitcher.pythonanywhere.com/permission_accept/' ,
+        url : backend_url+'permission_accept/' ,
         data : data
     })
     .then((response)=>{
@@ -320,7 +322,7 @@ const prof_rm_perm = async(id)=> {
     
     await axios ({
         method : 'post' , 
-        url : 'http://moncefwitcher.pythonanywhere.com/prof_rm_perm/' ,
+        url : backend_url+'prof_rm_perm/' ,
         data : data
     })
     .then((response)=>{
@@ -354,7 +356,7 @@ const prof_rm_perm = async(id)=> {
         data.append('gmail', link_gmail);
         await axios ({
             method : 'post' , 
-            url : 'http://moncefwitcher.pythonanywhere.com/setlinks/' ,
+            url : backend_url+'setlinks/' ,
             data : data
         })
         .then((response)=>{
@@ -389,7 +391,7 @@ const add_page_cat = async() => {
     }
     await axios ({
         method : 'post' , 
-        url : 'http://moncefwitcher.pythonanywhere.com/add_page_cat' ,
+        url : backend_url+'/add_page_cat' ,
         data : pack
     })
     .then((response)=>{
@@ -431,7 +433,7 @@ const handle_delete_page = async(id) => {
     
     await axios ({
         method : 'post' , 
-        url : 'http://moncefwitcher.pythonanywhere.com/add_page/delete' ,
+        url : backend_url+'/add_page/delete' ,
         data : pack
     })
     .then((response)=>{
@@ -451,7 +453,7 @@ const handle_delete_cat_page = async(id) => {
     
     await axios ({
         method : 'post' , 
-        url : 'http://moncefwitcher.pythonanywhere.com/add_page_cat/delete' ,
+        url : backend_url+'/add_page_cat/delete' ,
         data : pack
     })
     .then((response)=>{
@@ -502,7 +504,7 @@ useEffect(()=>{
         
         await axios ({
             method : 'post' , 
-            url : 'http://moncefwitcher.pythonanywhere.com/register_quiz_correction' ,
+            url : backend_url+'register_quiz_correction' ,
             data : pack
         })
         .then((response)=>{
@@ -559,7 +561,7 @@ console.log(quiz_obejct)
                     <img className='xmark_' src={blue_x_mark} onClick={()=>setDelObject()}  />
                     <h4>êtes-vous sûr de vouloir supprimer ceci</h4>
                     <div  className='book_edit center' >
-                                <img className='book_cover' src={'http://moncefwitcher.pythonanywhere.com/'+delObject['cover']}/>
+                                <img className='book_cover' src={backend_url+delObject['cover']}/>
                                 <div className='bookD'>
                                     <div className='center bx'>
                                         <p className='Index'>nome de livre <span> : </span>  </p>
@@ -668,7 +670,7 @@ console.log(quiz_obejct)
                 (data) ?
                     (data['books'].map((ob,i)=> 
                         <div key={i} className={(i%2 ) ? 'book_edit center linear' : 'book_edit center' }>
-                            <img className='book_cover' src={'http://moncefwitcher.pythonanywhere.com/'+ob['cover']}/>
+                            <img className='book_cover' src={backend_url+ob['cover']}/>
                             <div className='controle spacebetween'>
                                 <img src={edit} onClick={()=>setBookEdit(ob['id'])} />
                                 <img src={trash} onClick={()=>setDelBook(ob['id'])}  />
@@ -770,7 +772,7 @@ console.log(quiz_obejct)
                 <div key={i} className={(i%2 == 0)?'profile_users liear  spacebetween':'profile_users spacebetween'}>
                     <div className='center p_box'>
                         <div className='pic center'>  
-                            <img src={'http://moncefwitcher.pythonanywhere.com/'+ob['picture']} />
+                            <img src={backend_url+ob['picture']} />
                         </div>
                         <p>{ob['name']}</p>
                         <p>{ob['job']}</p>
@@ -809,7 +811,7 @@ console.log(quiz_obejct)
         <div key={i} className={(i%2 == 0)?'profile_users liear  spacebetween':'profile_users spacebetween'}>
             <div className='center p_box'>
                 <div className='pic center'>  
-                    <img src={'http://moncefwitcher.pythonanywhere.com/'+ob['picture']} />
+                    <img src={backend_url+ob['picture']} />
                 </div>
                 <p>{ob['name']}</p>
                 <p>{ob['job']}</p>
@@ -835,7 +837,7 @@ console.log(quiz_obejct)
                 
                 <div className='f_box cover '>
                     <div className='pic center'>
-                        <img src={'http://moncefwitcher.pythonanywhere.com/'+data['picture']} />
+                        <img src={backend_url+data['picture']} />
                     </div>
                     <input type='file' id='img_inp'  onChange={(e)=> setPicture(e.target.files[0])} ref={img_btn} />    
 
@@ -941,7 +943,7 @@ console.log(quiz_obejct)
                                             <div className='line center' key={s}>
                                                 <div className="box center fs"> 
                                                     <div className='cover'>
-                                                        <img className='profile_pic' src={'http://moncefwitcher.pythonanywhere.com/'+os['cover']} />
+                                                        <img className='profile_pic' src={backend_url+os['cover']} />
                                                     </div>
                                                     <p className='username'>{os['name']}</p>
                                                 </div>
@@ -961,7 +963,7 @@ console.log(quiz_obejct)
                                              </div>                    
                                                 <div className="box center fs"> 
                                                     <div className='cover'>
-                                                        <img className='profile_pic' src={'http://moncefwitcher.pythonanywhere.com/'+quiz_obejct?.['cover']} />
+                                                        <img className='profile_pic' src={backend_url+quiz_obejct?.['cover']} />
                                                     </div>
                                                     <p className='username'>{quiz_obejct?.['name']}</p>
                                                 </div>
