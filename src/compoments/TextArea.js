@@ -24,7 +24,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 function TextArea({edited_page_id , setEdited_page}) {
 
-  const backend_url = 'http://moncefwitcher.pythonanywhere.com/'
+  const backend_url = 'https://moncefwitcher.pythonanywhere.com/'
 
   const navigate = useNavigate()
 
