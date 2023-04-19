@@ -60,7 +60,7 @@ const UpdateUser =  async() => {
         }
         if (response.data == -1) {
             setErrorMessage(9)
-            console.log('incorrect password')
+
         }
     
     }) .catch(function (error) {
@@ -96,11 +96,11 @@ const login = async()=> {
     .then((response)=>{
         if (response.data == 0) {
             setErrorMessage(2)
-            console.log('password incorect ')
+
         }
         if (response.data == -1) {
             setErrorMessage(1)
-            console.log('email incorect')
+
         }else {
 
             if (response.data != 0 ){
@@ -128,7 +128,8 @@ useEffect (()=> {
         
     }
 },[email])
-console.log(confNewPass)
+
+
 useEffect(()=> {
     if (newPass.match(confNewPass) ==null && confNewPass != ''   ) {
         setErrorMessage(10)
@@ -148,10 +149,10 @@ useEffect(()=> {
 },[passwordConf])
 
 const sign = async()=> {  
-    console.log('siging')
 
+    
     if (errorMessage == false && name != '' && email != '' && password != '' ) {
-        console.log('me')
+
         const DataForm= new FormData();
         DataForm.append('name' , name)
         DataForm.append('password' , password)
@@ -262,7 +263,7 @@ useEffect(() => {
   };
 }, []);
 
-console.log(windowWidth)
+
 
     // ------------backg ------------
 switch (content){
