@@ -53,7 +53,7 @@ function Admin({setSetTest , edited_page_id , setEdited_page}) {
             setInstagram(response.data['links']['insta'])
             setwhatsapp(response.data['links']['whatsapp'])
             setgmail(response.data['links']['gmail'])
-            console.log(respo)
+            console.log(response.data)
            
         }) .catch(function (error) {
             console.log(error)
